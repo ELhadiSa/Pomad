@@ -1,0 +1,20 @@
+10:44:48 **** Build of configuration Debug for project blink ****
+make all 
+arm-none-eabi-gcc "../main.c" -std=gnu11 -g3 -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"main.d" -MT"main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "main.o"
+arm-none-eabi-gcc -o "blink.elf" @"objects.list"   --specs=nosys.specs -Wl,-Map="blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: blink.elf
+ 
+arm-none-eabi-size   blink.elf 
+   text	   data	    bss	    dec	    hex	filename
+    630	    104	     28	    762	    2fa	blink.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  blink.elf  > "blink.list"
+Finished building: blink.list
+ 
+arm-none-eabi-objcopy  -O binary  blink.elf  "blink.bin"
+Finished building: blink.bin
+ 
+
+10:44:49 Build Finished. 0 errors, 0 warnings. (took 1s.84ms)
+

@@ -1,0 +1,12 @@
+10:40:49 **** Build of configuration Debug for project tuto_pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"main.d" -MT"main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "main.o"
+arm-none-eabi-gcc -o "tuto_pomad.elf" @"objects.list"   -mcpu=cortex-m7 --specs=nosys.specs -Wl,-Map="tuto_pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.0.0.201904181610/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o: In function `_start':
+(.text+0x4a): undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: tuto_pomad.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+10:40:51 Build Failed. 1 errors, 0 warnings. (took 1s.125ms)
+
