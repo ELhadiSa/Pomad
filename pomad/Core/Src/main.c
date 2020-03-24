@@ -1,9 +1,13 @@
-#define PERIOD	100000
+/*
+ * main.c
+ */
 
-static void reset_handler 		(void);
-static void default_handler		(void);
+#define DELAY_ON	20000
+#define DELAY_OFF	100000
 
-int main (void);
+static void 	reset_handler 		(void);
+static void 	default_handler		(void);
+int 			main 			(void);
 
 /* Minimal vector table */
 __attribute__ ((section(".isr_vector")))
@@ -18,28 +22,52 @@ void (* const table_interrupt_vector[])(void) =
 /* Main program */
 int main(void)
 {
-    int i;
+    int i = 0, j = 0;
+    unsigned char state = 0;
 
-    *(int *)0x40021014 |=  (0x01 <<17U);
-    *(int *)0x48000000 &= ~(0xC00);
-    *(int *)0x48000000 |=  (0x01 <<10U);
+	*(int *)0x40021014 |=  (0x01 <<17U);
+	*(int *)0x48000000 &= ~(0xC00);
+	*(int *)0x48000000 |=  (0x01 <<10U);
 
-    while(1)
-    {
-	*(int *)0x48000014 ^= 0x00000020U;
-	for (i=0; i<PERIOD; i++);
-    }
+	while(1)
+	{
+		switch (state)
+		{
+			case 0:
+			{
+				*(int *)0x48000014 &= ~0x00000020U;
+				i++;
+				if (i>DELAY_OFF)
+				{
+					i = 0;
+					j++;
+					state = 1;
+				}
+				break;
+			}
+			case 1:
+			{
+				*(int *)0x48000014 |= 0x00000020U;
+				i++;
+				if (i>DELAY_ON)
+				{
+					i = 0;
+					state = 0;
+				}
+				break;
+			}
+		}
+	}
 }
-
 
 /* Reset handler */
 void reset_handler (void)
 {
-    main();
+	main();
 }
 
 /* Default handler */
 void default_handler(void)
 {
-    for(;;);
+	for(;;);
 }
