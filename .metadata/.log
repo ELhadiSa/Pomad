@@ -1,0 +1,21 @@
+!SESSION 2020-03-24 10:25:01.055 -----------------------------------------------
+eclipse.buildId=Version 1.3.0
+java.version=1.8.0_242
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-03-24 10:25:11.491
+!MESSAGE Log4j initialized with config file C:\Users\pc\Documents\travail perso\pomad_remote\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-03-24 10:25:12.708
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-03-24 10:25:13.935
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-24 10:26:02.594
+!MESSAGE Indexed 'tuto_pomad' (0 sources, 0 headers) in 0.002 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-24 10:26:06.873
+!MESSAGE Indexed 'tuto_pomad' (31 sources, 82 headers) in 2.51 sec: 6,572 declarations; 38,432 references; 4 unresolved inclusions; 97 syntax errors; 2,796 unresolved names (5.8%)
