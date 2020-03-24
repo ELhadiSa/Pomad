@@ -41,13 +41,9 @@ int main(void)
     //gpio speed GPIOx_OSPEEDR
     *(int *)0x40020408 |=  (0x00 <<29U);
     *(int *)0x40020408 |=  (0x00 <<28U);
-    //gpio intial PUPDR
+
     *(int *)0x4002040c |=  (0x00 <<29U);
     *(int *)0x4002040c |=  (0x01 <<28U);
-
-    //gpio intial PUPDR
-    *(int *)0x40020414 |=  (0x01 <<14U);
-
     while(1)
 	{
 		switch (state)

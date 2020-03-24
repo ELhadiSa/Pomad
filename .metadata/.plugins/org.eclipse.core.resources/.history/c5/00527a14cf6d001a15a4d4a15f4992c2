@@ -29,50 +29,39 @@ int main(void)
 //	*(int *)0x48000000 &= ~(0xC00);
 //	*(int *)0x48000000 |=  (0x01 <<10U);
 
-    //AHB
-    *(int *)0x40023830 |=  (0x01 <<1U);
-    //gpio output MODER
+    //gpio output
+    *(int *)0x40020400 |=  (0x00 <<29U);
+    *(int *)0x40020400 |=  (0x01 <<28U);
+    //
+    *(int *)0x40020404 |=  (0x01 <<14U);
 
     *(int *)0x40020400 |=  (0x00 <<29U);
     *(int *)0x40020400 |=  (0x01 <<28U);
-    //gpio mode OTYPER
-    *(int *)0x40020404 |=  (0x00 <<14U);
-
-    //gpio speed GPIOx_OSPEEDR
-    *(int *)0x40020408 |=  (0x00 <<29U);
-    *(int *)0x40020408 |=  (0x00 <<28U);
-    //gpio intial PUPDR
-    *(int *)0x4002040c |=  (0x00 <<29U);
-    *(int *)0x4002040c |=  (0x01 <<28U);
-
-    //gpio intial PUPDR
-    *(int *)0x40020414 |=  (0x01 <<14U);
-
     while(1)
 	{
 		switch (state)
 		{
 			case 0:
 			{
-//				*(int *)0x48000014 &= ~0x00000020U;
-//				i++;
-//				if (i>DELAY_OFF)
-//				{
-//					i = 0;
-//					j++;
-//					state = 1;
-//				}
+				*(int *)0x48000014 &= ~0x00000020U;
+				i++;
+				if (i>DELAY_OFF)
+				{
+					i = 0;
+					j++;
+					state = 1;
+				}
 				break;
 			}
 			case 1:
 			{
-//				*(int *)0x48000014 |= 0x00000020U;
-//				i++;
-//				if (i>DELAY_ON)
-//				{
-//					i = 0;
-//					state = 0;
-//				}
+				*(int *)0x48000014 |= 0x00000020U;
+				i++;
+				if (i>DELAY_ON)
+				{
+					i = 0;
+					state = 0;
+				}
 				break;
 			}
 		}
