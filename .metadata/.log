@@ -3114,3 +3114,6 @@ Cannot execute this command while the selected thread is running.
 java.lang.Exception: Cannot execute this command while the selected thread is running.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-27 17:55:21.330
+!MESSAGE Indexed 'pomad' (6 sources, 35 headers) in 0.621 sec: 3,847 declarations; 10,439 references; 2 unresolved inclusions; 28 syntax errors; 145 unresolved names (1%)

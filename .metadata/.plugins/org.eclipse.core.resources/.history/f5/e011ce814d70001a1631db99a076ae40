@@ -38,9 +38,9 @@ void main(void)
 			// Send '#' only once
 			if (sent == 0)
 			{
-				my_printf("#:%d\r\n",i);
+				while ((USART3->ISR & USART_ISR_TC) != USART_ISR_TC);
+				USART3->TDR = 'B';
 				sent = 1;
-				i++;
 			}
 		}
 

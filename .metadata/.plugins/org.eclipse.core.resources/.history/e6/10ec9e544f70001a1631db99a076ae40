@@ -38,7 +38,7 @@ void main(void)
 			// Send '#' only once
 			if (sent == 0)
 			{
-				my_printf("#:%d\r\n",i);
+				my_printf("zebi:%d\r\n",i);
 				sent = 1;
 				i++;
 			}
