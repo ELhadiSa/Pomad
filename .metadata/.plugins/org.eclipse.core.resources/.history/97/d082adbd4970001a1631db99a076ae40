@@ -56,7 +56,7 @@ void main(void)
 
 void SystemClock_Config(void){
 	/*
-	 * HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
+	 * HSI CONF to get 48MHZ 16
 	 */
 		uint32_t 	HSI_Status;
 		uint32_t	PLL_Status;
@@ -89,9 +89,10 @@ void SystemClock_Config(void){
 		RCC->PLLCFGR |= (0xF0 <<RCC_PLLCFGR_PLLN_Pos);
 
 		//PLLP
-		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP;
-		RCC->PLLCFGR |= (0x3 <<RCC_PLLCFGR_PLLP_Pos);
-
+		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP_0;
+		RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_0);
+		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP_1;
+		RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_1);
 		// Main PLL activation
 
 		RCC->CR |= RCC_CR_PLLON;

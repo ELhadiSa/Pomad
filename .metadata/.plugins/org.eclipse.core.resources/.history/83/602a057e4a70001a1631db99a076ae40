@@ -90,7 +90,7 @@ void SystemClock_Config(void){
 
 		//PLLP
 		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP;
-		RCC->PLLCFGR |= (0x3 <<RCC_PLLCFGR_PLLP_Pos);
+		RCC->PLLCFGR |= (0x11 <<RCC_PLLCFGR_PLLP_Pos);
 
 		// Main PLL activation
 

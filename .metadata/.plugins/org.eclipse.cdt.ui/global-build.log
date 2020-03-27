@@ -1,13 +1,24 @@
-15:31:53 **** Incremental Build of configuration Debug for project pomad ****
+17:17:47 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
  void main(void)
       ^~~~
 ../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
 ../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
   uint8_t i, sent;
           ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: pomad.elf
  
@@ -15,17 +26,269 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1304	      8	   1568	   2880	    b40	pomad.elf
+   1604	      8	   1568	   3180	    c6c	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:18:05 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1864	     12	   1564	   3440	    d70	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:24:19 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1864	     12	   1564	   3440	    d70	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:33:40 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1864	     12	   1564	   3440	    d70	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:39:14 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'SystemClock_Config':
+../Core/Src/main.c:93:24: warning: left shift count >= width of type [-Wshift-count-overflow]
+   RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_0);
+                        ^~
+../Core/Src/main.c:95:24: warning: left shift count >= width of type [-Wshift-count-overflow]
+   RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_1);
+                        ^~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1880	     12	   1564	   3456	    d80	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:41:01 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'SystemClock_Config':
+../Core/Src/main.c:93:24: warning: left shift count >= width of type [-Wshift-count-overflow]
+   RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_0);
+                        ^~
+../Core/Src/main.c:95:24: warning: left shift count >= width of type [-Wshift-count-overflow]
+   RCC->PLLCFGR |= (0x1 <<RCC_PLLCFGR_PLLP_1);
+                        ^~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1880	     12	   1564	   3456	    d80	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
+ 
+17:44:33 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1864	     12	   1564	   3440	    d70	pomad.elf
 Finished building: default.size.stdout
  
 Finished building: pomad.bin
 Finished building: pomad.list
  
  
-15:34:54 **** Incremental Build of configuration Debug for project pomad ****
+17:46:24 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:16:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void)
+      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:21:2: warning: implicit declaration of function 'SystemClock_Config'; did you mean 'SysTick_Config'? [-Wimplicit-function-declaration]
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/main.c:18:10: warning: unused variable 'i' [-Wunused-variable]
+  uint8_t i, sent;
+          ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:6: warning: conflicting types for 'SystemClock_Config'
+ void SystemClock_Config(void){
+      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:21:2: note: previous implicit declaration of 'SystemClock_Config' was here
+  SystemClock_Config();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1304	      8	   1568	   2880	    b40	pomad.elf
+   1864	     12	   1564	   3440	    d70	pomad.elf
 Finished building: default.size.stdout
+ 
+Finished building: pomad.list
+Finished building: pomad.bin
+ 
  

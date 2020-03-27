@@ -39,7 +39,7 @@ void main(void)
 			if (sent == 0)
 			{
 				while ((USART3->ISR & USART_ISR_TC) != USART_ISR_TC);
-				USART3->TDR = 'B';
+				USART3->TDR = '#';
 				sent = 1;
 			}
 		}
@@ -56,7 +56,7 @@ void main(void)
 
 void SystemClock_Config(void){
 	/*
-	 * HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
+	 * HSI CONF to get 48MHZ
 	 */
 		uint32_t 	HSI_Status;
 		uint32_t	PLL_Status;
@@ -90,7 +90,7 @@ void SystemClock_Config(void){
 
 		//PLLP
 		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP;
-		RCC->PLLCFGR |= (0x3 <<RCC_PLLCFGR_PLLP_Pos);
+		RCC->PLLCFGR |= (0x8 <<RCC_PLLCFGR_PLLP_Pos);
 
 		// Main PLL activation
 

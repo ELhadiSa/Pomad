@@ -39,7 +39,7 @@ void main(void)
 			if (sent == 0)
 			{
 				while ((USART3->ISR & USART_ISR_TC) != USART_ISR_TC);
-				USART3->TDR = 'B';
+				USART3->TDR = '#';
 				sent = 1;
 			}
 		}
@@ -56,7 +56,7 @@ void main(void)
 
 void SystemClock_Config(void){
 	/*
-	 * HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
+	 * HSI CONF to get 48MHZ
 	 */
 		uint32_t 	HSI_Status;
 		uint32_t	PLL_Status;
@@ -77,8 +77,14 @@ void SystemClock_Config(void){
 			} while ((HSI_Status == 0) && (timeout > 0));
 
 
-		// Main PLL Configuration PLLM/10 PLLNx240 PLLP/8
+		// Main PLL Configuration
 
+
+		do
+			{
+				PLL_Status = RCC->CR & RCC_CR_PLLRDY_Msk;
+				timeout--;
+			} while ((PLL_Status == 0) && (timeout > 0));
 
 		//PLLM
 		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLM;
@@ -90,45 +96,60 @@ void SystemClock_Config(void){
 
 		//PLLP
 		RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP;
-		RCC->PLLCFGR |= (0x3 <<RCC_PLLCFGR_PLLP_Pos);
+		RCC->PLLCFGR |= (0x8 <<RCC_PLLCFGR_PLLP_Pos);
 
 		// Main PLL activation
 
 		RCC->CR |= RCC_CR_PLLON;
-		do
-				{
-					PLL_Status = RCC->CR & RCC_CR_PLLRDY_Msk;
-					timeout--;
-				} while ((PLL_Status == 0) && (timeout > 0));
-
-
-		//APB1 and AHB1 Conf /1 /1
-		RCC->CFGR &= RCC_CFGR_PPRE1_Msk;
-		RCC->CFGR |= RCC_CFGR_PPRE1_DIV1;
-
-		RCC->CFGR &= RCC_CFGR_HPRE_Msk;
-		RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
-
-		// Enable FLASH Prefetch Buffer and set Flash Latency
-		FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_LATENCY;
 		// Wait until HSE is ready
 
-
-
-		/* --- Until this point, MCU was still clocked by HSI at 8MHz ---*/
-		/* --- Switching to PLL at 48MHz Now!  Fasten your seat belt! ---*/
-
-		// Select the main PLL as system clock source
-		RCC->CFGR &= ~RCC_CFGR_SW;
-		RCC->CFGR |= RCC_CFGR_SW_PLL;
 //
-		// Wait until PLL becomes main switch input
-		do
-		{
-			SW_Status = (RCC->CFGR & RCC_CFGR_SWS_Msk);
-			timeout--;
-		} while ((SW_Status != RCC_CFGR_SWS_PLL) && (timeout > 0));
-
+//		// Select HSI as PLL input source
+//		RCC->CFGR &= ~RCC_CFGR_PLLSRC_Msk;
+//		RCC->CFGR |= (0x02 <<RCC_CFGR_PLLSRC_Pos);
+//
+//		// Set PLL PREDIV to /1
+//		RCC->CFGR2 = 0x00000000;
+//
+//		// Set PLL MUL to x6
+//		RCC->CFGR &= ~RCC_CFGR_PLLMUL_Msk;
+//		RCC->CFGR |= (0x04 <<RCC_CFGR_PLLMUL_Pos);
+//
+//		// Enable the main PLL
+//		RCC-> CR |= RCC_CR_PLLON;
+//
+//		// Wait until PLL is ready
+//		do
+//		{
+//			PLL_Status = RCC->CR & RCC_CR_PLLRDY_Msk;
+//			timeout--;
+//		} while ((PLL_Status == 0) && (timeout > 0));
+//
+//	        // Set AHB prescaler to /1
+//		RCC->CFGR &= ~RCC_CFGR_HPRE_Msk;
+//		RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
+//
+//		//Set APB1 prescaler to /1
+//		RCC->CFGR &= ~RCC_CFGR_PPRE_Msk;
+//		RCC->CFGR |= RCC_CFGR_PPRE_DIV1;
+//
+//		// Enable FLASH Prefetch Buffer and set Flash Latency
+//		FLASH->ACR = FLASH_ACR_PRFTBE | FLASH_ACR_LATENCY;
+//
+//		/* --- Until this point, MCU was still clocked by HSI at 8MHz ---*/
+//		/* --- Switching to PLL at 48MHz Now!  Fasten your seat belt! ---*/
+//
+//		// Select the main PLL as system clock source
+//		RCC->CFGR &= ~RCC_CFGR_SW;
+//		RCC->CFGR |= RCC_CFGR_SW_PLL;
+//
+//		// Wait until PLL becomes main switch input
+//		do
+//		{
+//			SW_Status = (RCC->CFGR & RCC_CFGR_SWS_Msk);
+//			timeout--;
+//		} while ((SW_Status != RCC_CFGR_SWS_PLL) && (timeout > 0));
+//
 //		/* --- Here we go! ---*/
 //
 //		/*--- Use PA8 as MCO output at 48/16 = 3MHz ---*/
@@ -153,6 +174,6 @@ void SystemClock_Config(void){
 //		GPIOA->AFR[1] |=  (0x00000000);
 //
 //		// Update SystemCoreClock global variable
-		SystemCoreClockUpdate();
+//		SystemCoreClockUpdate();
 
 }
