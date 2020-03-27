@@ -1,0 +1,18 @@
+/*
+ * main.c
+ *
+ *  Created on: 5 août 2017
+ *      Author: Laurent
+ */
+
+
+#include "stm32f7xx.h"
+#include "bsp.h"
+
+
+
+int main()
+{
+	BSP_Console_Init();
+	while (1);
+}

@@ -5,3 +5,7 @@
 1585043573927	Delete resource 'pomad/Debug'
 1585043698359	Delete resource 'pomad/Debug'
 1585044120814	Delete resource 'pomad/Debug'
+1585315575138	Delete resource 'pomad/Core/Src/stm32f7xx_hal_msp.c'
+1585315580126	Delete resource 'pomad/Drivers/STM32F7xx_HAL_Driver'
+1585315625909	Delete 2 resources
+1585316385501	Delete resource 'pomad/Core/Inc/stm32f7xx_hal_conf.h'
