@@ -9,3 +9,5 @@
 1585315580126	Delete resource 'pomad/Drivers/STM32F7xx_HAL_Driver'
 1585315625909	Delete 2 resources
 1585316385501	Delete resource 'pomad/Core/Inc/stm32f7xx_hal_conf.h'
+1585327844676	Delete resource 'pomad/Core/Src/stm32f7xx_hal_msp.c'
+1585327848710	Delete resource 'pomad/Drivers/STM32F7xx_HAL_Driver'
