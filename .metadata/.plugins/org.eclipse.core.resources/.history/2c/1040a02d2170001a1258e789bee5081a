@@ -78,7 +78,7 @@ void BSP_LED_Toggle()
 void BSP_PB_Init()
 {
 	// Enable GPIOC clock
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
 
 	// Configure PC13 as input
 	GPIOC->MODER &= ~GPIO_MODER_MODER13_Msk;
@@ -97,13 +97,13 @@ uint8_t BSP_PB_GetState()
 {
 	uint8_t state;
 
-	if ((GPIOC->IDR & GPIO_IDR_ID13) == GPIO_IDR_ID13)
+	if ((GPIOC->IDR & GPIO_IDR_13) == GPIO_IDR_13)
 	{
-		state = 1;
+		state = 0;
 	}
 	else
 	{
-		state = 0;
+		state = 1;
 	}
 
 	return state;

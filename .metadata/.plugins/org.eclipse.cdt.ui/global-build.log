@@ -1,42 +1,10 @@
-12:09:35 **** Incremental Build of configuration Debug for project pomad ****
+12:50:39 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
  void main()
       ^~~~
-../Core/Src/main.c:13:13: warning: 'SystemClock_Config' declared 'static' but never defined [-Wunused-function]
- static void SystemClock_Config(void);
-             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: pomad.elf
- 
-arm-none-eabi-size   pomad.elf 
-arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
-arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
-   text	   data	    bss	    dec	    hex	filename
-   1020	      8	   1568	   2596	    a24	pomad.elf
-Finished building: default.size.stdout
- 
-Finished building: pomad.bin
-Finished building: pomad.list
- 
- 
-12:09:49 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-size   pomad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1020	      8	   1568	   2596	    a24	pomad.elf
-Finished building: default.size.stdout
- 
-12:11:27 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
- void main()
-      ^~~~
-../Core/Src/main.c:13:13: warning: 'SystemClock_Config' declared 'static' but never defined [-Wunused-function]
- static void SystemClock_Config(void);
-             ^~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: pomad.elf
  
@@ -44,14 +12,21 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1020	      8	   1568	   2596	    a24	pomad.elf
+   1108	      8	   1568	   2684	    a7c	pomad.elf
 Finished building: default.size.stdout
  
-Finished building: pomad.bin
 Finished building: pomad.list
+Finished building: pomad.bin
  
  
-12:13:31 **** Incremental Build of configuration Debug for project pomad ****
+12:50:43 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1108	      8	   1568	   2684	    a7c	pomad.elf
+Finished building: default.size.stdout
+ 
+13:05:27 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -61,14 +36,35 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1020	      8	   1568	   2596	    a24	pomad.elf
+   1108	      8	   1568	   2684	    a7c	pomad.elf
 Finished building: default.size.stdout
  
 Finished building: pomad.list
 Finished building: pomad.bin
  
  
-12:24:48 **** Incremental Build of configuration Debug for project pomad ****
+13:06:52 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main()
+      ^~~~
+arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pomad.elf
+ 
+arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
+arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1108	      8	   1568	   2684	    a7c	pomad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pomad.bin
+Finished building: pomad.list
+ 
+ 
+13:07:46 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -78,14 +74,14 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1020	      8	   1568	   2596	    a24	pomad.elf
+   1108	      8	   1568	   2684	    a7c	pomad.elf
 Finished building: default.size.stdout
  
-Finished building: pomad.list
 Finished building: pomad.bin
+Finished building: pomad.list
  
  
-12:25:11 **** Incremental Build of configuration Debug for project pomad ****
+13:10:19 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -95,22 +91,23 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1016	      8	   1568	   2592	    a20	pomad.elf
+   1108	      8	   1568	   2684	    a7c	pomad.elf
 Finished building: default.size.stdout
  
-Finished building: pomad.list
 Finished building: pomad.bin
+Finished building: pomad.list
  
  
-12:26:06 **** Incremental Build of configuration Debug for project pomad ****
+13:24:01 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
- void main()
-      ^~~~
-../Core/Src/main.c:13:13: warning: 'SystemClock_Config' declared 'static' but never defined [-Wunused-function]
- static void SystemClock_Config(void);
-             ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1108	      8	   1568	   2684	    a7c	pomad.elf
+Finished building: default.size.stdout
+ 
+13:24:47 **** Incremental Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: pomad.elf
  
@@ -118,63 +115,10 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   1008	      8	   1568	   2584	    a18	pomad.elf
-Finished building: default.size.stdout
- 
-Finished building: pomad.list
-Finished building: pomad.bin
- 
- 
-12:26:34 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
- void main()
-      ^~~~
-../Core/Src/main.c:13:13: warning: 'SystemClock_Config' declared 'static' but never defined [-Wunused-function]
- static void SystemClock_Config(void);
-             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: pomad.elf
- 
-arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
-arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
-arm-none-eabi-size   pomad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1016	      8	   1568	   2592	    a20	pomad.elf
-Finished building: default.size.stdout
- 
-Finished building: pomad.list
-Finished building: pomad.bin
- 
- 
-12:27:11 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:17:6: warning: return type of 'main' is not 'int' [-Wmain]
- void main()
-      ^~~~
-../Core/Src/main.c:13:13: warning: 'SystemClock_Config' declared 'static' but never defined [-Wunused-function]
- static void SystemClock_Config(void);
-             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: pomad.elf
- 
-arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
-arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
-arm-none-eabi-size   pomad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1016	      8	   1568	   2592	    a20	pomad.elf
+   1108	      8	   1568	   2684	    a7c	pomad.elf
 Finished building: default.size.stdout
  
 Finished building: pomad.bin
 Finished building: pomad.list
  
- 
-12:27:20 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-size   pomad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1016	      8	   1568	   2592	    a20	pomad.elf
-Finished building: default.size.stdout
  

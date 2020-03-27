@@ -16,38 +16,28 @@ static void SystemClock_Config(void);
 
 void main()
 {
-	// Configure System Clock
-	SystemClock_Config();
 
 	// Initialize LED pin
 	BSP_LED_Init();
-
-	// Initialize User-Button pin
-	BSP_PB_Init();
 
 	// Turn LED On
 	BSP_LED_On();
 
 	// Turn LED Off
 	BSP_LED_Off();
-
+int32_t i=0;
 	while(1)
 	{
-		// Turn LED On if User-Button is pushed down
-		if (BSP_PB_GetState() == 1)
-		{
-			BSP_LED_On();
-		}
 
-		// Otherwise turn LED Off
-		else
+
+		i++;
+		if (i==800000000)
 		{
-			BSP_LED_Off();
+			// Toggle LED state
+			BSP_LED_Toggle();
+			i=0;
 		}
 	}
 }
 
 
-void SystemClock_Config(void){
-
-}
