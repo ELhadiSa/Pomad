@@ -1353,3 +1353,7 @@
 2020-03-27 17:08:09,211 [INFO] IPUIPlugin:65 - create IPUIPlugin
 2020-03-27 17:08:09,227 [INFO] OpenFileManager:294 - Restore cursor
 2020-03-27 17:33:36,060 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 612196968 Bytes (1073741824)
+2020-03-28 11:24:22,018 [INFO] Activator:176 - 
+
+
+2020-03-28 11:24:22,022 [INFO] Activator:177 - !SESSION log4j initialized

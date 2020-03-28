@@ -3117,3 +3117,21 @@ java.lang.Exception: Cannot execute this command while the selected thread is ru
 
 !ENTRY org.eclipse.cdt.core 1 0 2020-03-27 17:55:21.330
 !MESSAGE Indexed 'pomad' (6 sources, 35 headers) in 0.621 sec: 3,847 declarations; 10,439 references; 2 unresolved inclusions; 28 syntax errors; 145 unresolved names (1%)
+!SESSION 2020-03-28 10:50:05.395 -----------------------------------------------
+eclipse.buildId=Version 1.3.0
+java.version=1.8.0_242
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-03-28 11:24:16.824
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-03-28 11:24:22.010
+!MESSAGE Log4j initialized with config file C:\Users\pc\Documents\travail perso\pomad_remote\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-03-28 11:24:26.189
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-03-28 11:24:27.055
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties

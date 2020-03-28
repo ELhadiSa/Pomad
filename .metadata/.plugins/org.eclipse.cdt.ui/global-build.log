@@ -57,3 +57,10 @@ Finished building: pomad.bin
 Finished building: pomad.list
  
  
+12:04:45 **** Build of configuration Debug for project pomad ****
+make -j12 all 
+arm-none-eabi-size   pomad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2840	     12	   1564	   4416	   1140	pomad.elf
+Finished building: default.size.stdout
+ 
