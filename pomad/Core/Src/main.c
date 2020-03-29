@@ -9,52 +9,43 @@
 #include "stm32f7xx.h"
 #include "bsp.h"
 
+void SystemClock_Config(void);
+extern int my_printf	(const char *format, ...);
 
 
 // Main program
 
 void main(void)
 {
-	uint8_t	i, sent;
+	uint32_t	i;
 
-	// Configure System Clock
-	SystemClock_Config();
+		// Configure System Clock
+		SystemClock_Config();
 
-	// Initialize LED & Button pin
-	BSP_LED_Init();
-	BSP_PB_Init();
+		// Initialize Debug Console
+		BSP_Console_Init();
+		my_printf("Console ready!\r\n");
 
-	// Initialize Debug Console
-	BSP_Console_Init();
+		// Initialize and start ADC on PC1
+		BSP_ADC_Init();
+		my_printf("ADC ready!\r\n");
 
-	// Main loop
-	while(1)
-	{
-		// If User-Button is pushed down
-		if (BSP_PB_GetState() == 1)
+		// Main loop
+		while(1)
 		{
-			BSP_LED_On();	// Keep LED On
+			// Wait here until ADC EOC
+			while ((ADC3->SR & ADC_SR_EOC) != ADC_SR_EOC);
 
-			// Send '#' only once
-			if (sent == 0)
-			{
-				my_printf("#:%d\r\n",i);
-				sent = 1;
-				i++;
-			}
-		}
+			// Report result to console
+			my_printf("ADC value = %d\r\n", ADC3->DR);
 
-		// If User-Button is released
-		else
-		{
-			BSP_LED_Off();	// Keep LED Off
-			sent = 0;
+			// Wait about 200ms
+			for (i=0; i<500000; i++);
 		}
-	}
 }
 
 
-void SystemClock_Config(void){
+ void SystemClock_Config(void){
 	/*
 	 * HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
 	 */

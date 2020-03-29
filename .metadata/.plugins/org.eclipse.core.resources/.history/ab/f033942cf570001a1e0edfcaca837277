@@ -1,0 +1,217 @@
+/*
+ * bsp.c
+ *
+ *  Created on: 27 mars 2020
+ *      Author: pc
+ */
+
+#include "stm32f7xx.h"
+
+
+
+#include "bsp.h"
+
+/*
+ * BSP_LED_Init()
+ * Initialize LED pin (PB7) as a High-Speed Push-Pull output
+ * Set LED initial state to OFF
+ */
+
+void BSP_LED_Init()
+{
+	// Enable GPIOA clock
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+
+	// Configure PB7 as output
+	GPIOB->MODER &= ~GPIO_MODER_MODER7_Msk;
+	GPIOB->MODER |= (0x01 <<GPIO_MODER_MODER7_Pos);
+
+	// Configure PB7 as Push-Pull output
+	GPIOB->OTYPER &= ~GPIO_OTYPER_OT_7;
+
+	// Configure PB7 as High-Speed Output
+	GPIOB->OSPEEDR &= ~GPIO_OSPEEDR_OSPEEDR7_Msk;
+	GPIOB->OSPEEDR |= (0x03 <<GPIO_OSPEEDR_OSPEEDR7_Pos);
+
+	// Disable PA5 Pull-up/Pull-down
+	GPIOB->PUPDR &= ~GPIO_PUPDR_PUPDR7_Msk;
+
+	// Set Initial State OFF
+	GPIOB->BSRR |= GPIO_BSRR_BR_7;
+}
+
+
+/*
+ * BSP_LED_On()
+ * Turn ON LED on PB7
+ */
+
+void BSP_LED_On()
+{
+	GPIOB->BSRR = GPIO_BSRR_BS_7;
+}
+
+/*
+ * BSP_LED_Off()
+ * Turn OFF LED on PB7
+ */
+
+void BSP_LED_Off()
+{
+	GPIOB->BSRR = GPIO_BSRR_BR_7;
+}
+
+/*
+ * BSP_LED_Toggle()
+ * Toggle LED on PB7
+ */
+
+void BSP_LED_Toggle()
+{
+	GPIOB->ODR ^= GPIO_ODR_ODR_7;
+}
+
+
+
+
+/*
+ * BSP_PB_Init()
+ * Initialize Push-Button pin (PC13) as input without Pull-up/Pull-down
+ */
+
+void BSP_PB_Init()
+{
+	// Enable GPIOC clock
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+
+	// Configure PC13 as input
+	GPIOC->MODER &= ~GPIO_MODER_MODER13_Msk;
+	GPIOC->MODER |= (0x00 <<GPIO_MODER_MODER13_Pos);
+
+	// Disable PC13 Pull-up/Pull-down
+	GPIOC->PUPDR &= ~GPIO_PUPDR_PUPDR13_Msk;
+}
+
+/*
+ * BSP_PB_GetState()
+ * Returns the state of the button (0=released, 1=pressed)
+ */
+
+uint8_t BSP_PB_GetState()
+{
+	uint8_t state;
+
+	if ((GPIOC->IDR & GPIO_IDR_ID13) == GPIO_IDR_ID13)
+	{
+		state = 1;
+	}
+	else
+	{
+		state = 0;
+	}
+
+	return state;
+}
+/*
+ * BSP_Console_Init()
+ * USART2 @ 115200 Full Duplex
+ * 1 start - 8-bit - 1 stop
+ * TX -> PD8 (AF7)
+ * RX -> PD9 (AF7)
+ */
+
+void BSP_Console_Init()
+{
+	// Enable GPIOA clock
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
+
+//	// Configure PD8 and PD9 as Alternate function
+	GPIOD->MODER &= ~(GPIO_MODER_MODER8_Msk | GPIO_MODER_MODER9_Msk);
+	GPIOD->MODER |= (0x02 <<GPIO_MODER_MODER8_Pos) | (0x02 <<GPIO_MODER_MODER9_Pos);
+
+//	// Set PD8 and PD9 to AF7 (USART3)
+	GPIOD->AFR[1] &=  ~(0x000000FF);
+	GPIOD->AFR[1] |=   (0x00000077);
+//
+	// Enable USART3 clock
+	RCC -> APB1ENR |= RCC_APB1ENR_USART3EN;
+//
+	// Clear USART2 configuration (reset state)
+	// 8-bit, 1 start, 1 stop, CTS/RTS disabled
+	USART3->CR1 = 0x00000000;
+	USART3->CR2 = 0x00000000;
+	USART3->CR3 = 0x00000000;
+//
+	// Select PCLK (APB1) as clock source
+	// PCLK -> 48 MHz
+	RCC->DCKCFGR2 &= ~RCC_DCKCFGR2_USART3SEL_Msk;
+
+//
+	// Baud Rate = 115200
+	// With OVER8=0 and Fck=48MHz, USARTDIV =   48E6/115200 = 416.6666
+	// BRR = 417 -> Baud Rate = 115107.9137 -> 0.08% error
+	//
+	// With OVER8=1 and Fck=48MHz, USARTDIV = 2*48E6/115200 = 833.3333
+	// BRR = 833 -> Baud Rate = 115246.0984 -> 0.04% error (better)
+//
+	USART3->CR1 |= USART_CR1_OVER8;
+	USART3->BRR = 833;
+
+	// Enable both Transmitter and Receiver
+	USART3->CR1 |= USART_CR1_TE | USART_CR1_RE;
+
+	// Enable USART3
+	USART3->CR1 |= USART_CR1_UE;
+}
+
+
+
+/*
+ * ADC_Init()
+ * Initialize ADC for a single channel conversion
+ * on channel 9 -> pin PF3
+ */
+
+void BSP_ADC_Init()
+{
+	// Enable GPIOC clock
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOFEN;
+
+	// Configure pin PC1 as analog
+	GPIOF->MODER &= ~GPIO_MODER_MODER3_Msk;
+	GPIOF->MODER |= (0x03 <<GPIO_MODER_MODER3_Pos);
+
+	// Enable ADC clock
+	RCC->APB2ENR |= RCC_APB2ENR_ADC3EN;
+
+ADC3->CR1 = 0x00000000;
+	// Reset ADC configuration
+//	ADC1->CR 	= 0x00000000;
+//	ADC1->CFGR1  = 0x00000000;
+//	ADC1->CFGR2  = 0x00000000;
+//	ADC1->CHSELR = 0x00000000;
+//
+//	// Enable continuous conversion mode
+//	ADC1->CFGR1 |= ADC_CFGR1_CONT;
+//
+//	// 12-bit resolution
+//	ADC1->CFGR1 |= (0x00 <<ADC_CFGR1_RES_Pos);
+//
+//	// Select PCLK/2 as ADC clock
+//	ADC1->CFGR2 |= (0x01 <<ADC_CFGR2_CKMODE_Pos);
+//
+//	// Set sampling time to 28.5 ADC clock cycles
+//	ADC1->SMPR = 0x03;
+//
+//	// Select channel 11
+//	ADC1->CHSELR |= ADC_CHSELR_CHSEL11;
+//
+//	// Enable ADC
+//	ADC1->CR |= ADC_CR_ADEN;
+//
+//	// Start conversion
+//	ADC1->CR |= ADC_CR_ADSTART;
+
+	// Reset ADC configuration
+
+}

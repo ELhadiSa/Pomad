@@ -19,6 +19,8 @@ void	BSP_LED_Off	(void);
 void	BSP_LED_Toggle	(void);
 
 
+
+
 /*
  * Push-Button driver functions
  */
@@ -27,5 +29,13 @@ void		BSP_PB_Init		(void);
 uint8_t	BSP_PB_GetState	(void);
 
 
+
+
+
+/*
+ * ADC functions
+ */
+
+void BSP_ADC_Init		(void);
 
 #endif /* BSP_BSP_H_ */

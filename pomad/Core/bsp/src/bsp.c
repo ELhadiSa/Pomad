@@ -163,3 +163,59 @@ void BSP_Console_Init()
 	// Enable USART3
 	USART3->CR1 |= USART_CR1_UE;
 }
+
+
+
+/*
+ * ADC_Init()
+ * Initialize ADC for a single channel conversion
+ * on channel 9 -> pin PF3
+ */
+
+void BSP_ADC_Init()
+{
+	// Enable GPIOF clock
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOFEN;
+
+	// Configure pin PF3 as analog
+	GPIOF->MODER &= ~GPIO_MODER_MODER3_Msk;
+	GPIOF->MODER |= (0x03 <<GPIO_MODER_MODER3_Pos);
+
+	//configure PINF3
+	// Enable ADC clock
+	RCC->APB2ENR |= RCC_APB2ENR_ADC3EN;
+
+//	ADC3->CR1 = 0x00000000;
+//	ADC3->CR2 = 0x00000000;
+//	ADC3->SQR2 = 0x00000000;
+//	ADC3->SMPR2 = 0x00000000;
+//	ADC->CCR = 0x00000000;
+
+
+//
+	// Enable continuous conversion mode
+	ADC3->CR2 |= (0b1 << ADC_CR2_CONT_Pos);
+//
+//	// 12-bit resolution
+	ADC3->CR1 |= (0b00<< ADC_CR1_RES_Pos);
+	//
+	// Select PCLK/2 as ADC clock
+	ADC->CCR |= (0x00 <<ADC_CCR_ADCPRE_Pos);
+//
+//	// Set sampling time to 28.5 ADC clock cycles
+	ADC3->SMPR2 |= ( 0b010 << ADC_SMPR2_SMP9_Pos );
+
+
+///	// Select channel 9 (write the channel number on the first sequence)
+
+	ADC3->SQR3 |= (9 << ADC_SQR3_SQ1_Pos);
+
+//	// Enable ADC
+	ADC3->CR2 |= (0b1 << ADC_CR2_ADON_Pos);
+//
+//	// Start conversion
+	ADC3->CR2 |=  (0b1 <<ADC_CR2_SWSTART_Pos);
+
+	// Reset ADC configuration
+
+}

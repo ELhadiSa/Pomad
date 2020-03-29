@@ -1,10 +1,10 @@
-12:04:45 **** Build of configuration Debug for project pomad ****
+14:34:23 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   2840	     12	   1564	   4416	   1140	pomad.elf
+   2776	     12	   1564	   4352	   1100	pomad.elf
 Finished building: default.size.stdout
  
 
-12:04:46 Build Finished. 0 errors, 0 warnings. (took 842ms)
+14:34:24 Build Finished. 0 errors, 0 warnings. (took 497ms)
 
