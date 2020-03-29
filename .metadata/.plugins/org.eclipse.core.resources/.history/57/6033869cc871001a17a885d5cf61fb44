@@ -12,8 +12,7 @@
 void SystemClock_Config(void);
 extern int my_printf	(const char *format, ...);
 extern void BSP_DELAY_ms(uint32_t delay);
-extern int BSP_DELAY_TIM_init();
-extern int BSP_DELAY_TIM_ms();
+
 
 // Global variables
 
@@ -30,16 +29,25 @@ void main()
 	// Initialize LED pin
 	BSP_LED_Init();
 
-	// Initialize Timer for delays
-	BSP_DELAY_TIM_init();
+	// Initialize and start time base
+	BSP_TIMER_Timebase_Init();
+	TIM6_UIF = 0;
 
+	// Main loop
 	while(1)
 	{
-		// Toggle LED
-		BSP_LED_Toggle();
+		// Get actual counter value
+		TIM6_counter = TIM6->CNT;
 
-		// Wait for 200ms
-		BSP_DELAY_TIM_ms(200);
+		// If UIF is set
+		if ((TIM6->SR & TIM_SR_UIF) == TIM_SR_UIF)
+		{
+			// Toggle TIM6_UIF between 0 and 1024
+			TIM6_UIF ^= (0x01 <<10U);
+
+			// Reset UIF
+			TIM6->SR &= ~TIM_SR_UIF;
+		}
 	}
 }
 

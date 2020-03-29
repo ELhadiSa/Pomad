@@ -12,8 +12,8 @@
 void SystemClock_Config(void);
 extern int my_printf	(const char *format, ...);
 extern void BSP_DELAY_ms(uint32_t delay);
-extern int BSP_DELAY_TIM_init();
-extern int BSP_DELAY_TIM_ms();
+extern BSP_DELAY_TIM_init();
+extern BSP_DELAY_TIM_ms();
 
 // Global variables
 

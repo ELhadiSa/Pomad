@@ -47,24 +47,3 @@ void BSP_DELAY_TIM_init(void)
 	// Set ARR to maximum value
 	TIM6->ARR = (uint16_t) 0xFFFF;
 }
-
-
-/*
- * timer_delay_ms(uint16_t ms)
- * waits here for ms
- */
-
-void BSP_DELAY_TIM_ms(uint16_t ms)
-{
-	// Resets TIM6 counter
-	TIM6->EGR |= TIM_EGR_UG;
-
-	// Start TIM6 counter
-	TIM6->CR1 |= TIM_CR1_CEN;
-
-	// Wait until TIM6 counter reaches delay
-	while(TIM6->CNT < ms);
-
-	// Stop TIM6 counter
-	TIM6->CR1 &= ~TIM_CR1_CEN;
-}

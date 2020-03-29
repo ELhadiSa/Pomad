@@ -12,35 +12,28 @@
 void SystemClock_Config(void);
 extern int my_printf	(const char *format, ...);
 extern void BSP_DELAY_ms(uint32_t delay);
-extern int BSP_DELAY_TIM_init();
-extern int BSP_DELAY_TIM_ms();
 
-// Global variables
-
-uint16_t	TIM6_counter;
-uint16_t	TIM6_UIF;
 
 // Main program
 
-void main()
+int main(void)
 {
 	// Configure System Clock
-	SystemClock_Config();
+		SystemClock_Config();
 
-	// Initialize LED pin
-	BSP_LED_Init();
+		// Initialize LED pin
+		BSP_LED_Init();
 
-	// Initialize Timer for delays
-	BSP_DELAY_TIM_init();
+		// Main loop
+		while(1)
+		{
+			BSP_LED_Toggle();
+			BSP_DELAY_ms(500);
 
-	while(1)
-	{
-		// Toggle LED
-		BSP_LED_Toggle();
+		}
 
-		// Wait for 200ms
-		BSP_DELAY_TIM_ms(200);
-	}
+
+	return 0;
 }
 
 

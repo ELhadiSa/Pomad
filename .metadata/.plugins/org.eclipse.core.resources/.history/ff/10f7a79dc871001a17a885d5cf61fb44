@@ -17,12 +17,4 @@
 void BSP_DELAY_ms	(uint32_t delay);
 void BSP_DELAY_us	(uint32_t delay);
 
-
-
-/*
- * Timer delays
- */
-
-void BSP_DELAY_TIM_init		(void);
-void BSP_DELAY_TIM_ms		(uint16_t ms);
 #endif /* BSP_INC_DELAY_H_ */
