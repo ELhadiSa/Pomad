@@ -11,29 +11,37 @@
 
 void SystemClock_Config(void);
 extern int my_printf	(const char *format, ...);
-extern void BSP_DELAY_ms(uint32_t delay);
 
 
 // Main program
 
-int main(void)
+void main(void)
 {
-	// Configure System Clock
+	uint32_t	i;
+
+		// Configure System Clock
 		SystemClock_Config();
 
-		// Initialize LED pin
-		BSP_LED_Init();
+		// Initialize Debug Console
+		BSP_Console_Init();
+		my_printf("Console ready!\r\n");
+
+		// Initialize and start ADC on PC1
+		BSP_ADC_Init();
+		my_printf("ADC ready!\r\n");
 
 		// Main loop
 		while(1)
 		{
-			BSP_LED_Toggle();
-			BSP_DELAY_ms(500);
+			// Wait here until ADC EOC
+			while ((ADC3->SR & ADC_SR_EOC) != ADC_SR_EOC);
 
+			// Report result to console
+			my_printf("ADC value = %d\r\n", ADC3->DR);
+
+			// Wait about 200ms
+			for (i=0; i<500000; i++);
 		}
-
-
-	return 0;
 }
 
 
@@ -112,7 +120,8 @@ int main(void)
 			timeout--;
 		} while ((SW_Status != RCC_CFGR_SWS_PLL) && (timeout > 0));
 
-
+//		/* --- Here we go! ---*/
+//
 //		/*--- Use PA8 as MCO output at 48/16 = 3MHz ---*/
 //
 //		// Set MCO source as SYSCLK (48MHz)
@@ -134,7 +143,6 @@ int main(void)
 //		GPIOA->AFR[1] &= ~(0x0000000F);
 //		GPIOA->AFR[1] |=  (0x00000000);
 //
-
 //		// Update SystemCoreClock global variable
 		SystemCoreClockUpdate();
 

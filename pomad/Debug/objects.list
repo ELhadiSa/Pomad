@@ -4,3 +4,4 @@
 "Core/Src/system_stm32f7xx.o"
 "Core/Startup/startup_stm32f746zgtx.o"
 "Core/bsp/src/bsp.o"
+"Core/bsp/src/delay.o"

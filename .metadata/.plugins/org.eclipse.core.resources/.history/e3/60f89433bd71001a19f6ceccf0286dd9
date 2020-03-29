@@ -112,7 +112,9 @@ int main(void)
 			timeout--;
 		} while ((SW_Status != RCC_CFGR_SWS_PLL) && (timeout > 0));
 
-
+//		/* --- Here we go! ---*/
+//
+/*
 //		/*--- Use PA8 as MCO output at 48/16 = 3MHz ---*/
 //
 //		// Set MCO source as SYSCLK (48MHz)
@@ -133,7 +135,7 @@ int main(void)
 //		// Set to AF0 (MCO output)
 //		GPIOA->AFR[1] &= ~(0x0000000F);
 //		GPIOA->AFR[1] |=  (0x00000000);
-//
+//*/
 
 //		// Update SystemCoreClock global variable
 		SystemCoreClockUpdate();

@@ -16,7 +16,7 @@ extern void BSP_DELAY_ms(uint32_t delay);
 
 // Main program
 
-int main(void)
+void main(void)
 {
 	// Configure System Clock
 		SystemClock_Config();
@@ -31,9 +31,6 @@ int main(void)
 			BSP_DELAY_ms(500);
 
 		}
-
-
-	return 0;
 }
 
 
@@ -112,7 +109,8 @@ int main(void)
 			timeout--;
 		} while ((SW_Status != RCC_CFGR_SWS_PLL) && (timeout > 0));
 
-
+//		/* --- Here we go! ---*/
+//
 //		/*--- Use PA8 as MCO output at 48/16 = 3MHz ---*/
 //
 //		// Set MCO source as SYSCLK (48MHz)
@@ -134,7 +132,6 @@ int main(void)
 //		GPIOA->AFR[1] &= ~(0x0000000F);
 //		GPIOA->AFR[1] |=  (0x00000000);
 //
-
 //		// Update SystemCoreClock global variable
 		SystemCoreClockUpdate();
 

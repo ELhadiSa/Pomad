@@ -1,6 +1,6 @@
-14:34:15 **** Incremental Build of configuration Debug for project pomad ****
+15:00:02 **** Incremental Build of configuration Debug for project pomad ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/bsp/src/bsp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/bsp/src/bsp.d" -MT"Core/bsp/src/bsp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/bsp/src/bsp.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DSTM32F746xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Core/Inc -I"C:/Users/pc/Documents/travail perso/pomad_remote/pomad/Core/bsp/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "pomad.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\pc\Documents\travail perso\pomad_remote\pomad\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pomad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: pomad.elf
  
@@ -8,17 +8,10 @@ arm-none-eabi-objdump -h -S  pomad.elf  > "pomad.list"
 arm-none-eabi-objcopy  -O binary  pomad.elf  "pomad.bin"
 arm-none-eabi-size   pomad.elf 
    text	   data	    bss	    dec	    hex	filename
-   2776	     12	   1564	   4352	   1100	pomad.elf
+   1544	     12	   1564	   3120	    c30	pomad.elf
 Finished building: default.size.stdout
  
 Finished building: pomad.bin
 Finished building: pomad.list
  
- 
-14:34:23 **** Incremental Build of configuration Debug for project pomad ****
-make -j12 all 
-arm-none-eabi-size   pomad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   2776	     12	   1564	   4352	   1100	pomad.elf
-Finished building: default.size.stdout
  
