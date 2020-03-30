@@ -387,14 +387,13 @@ void BSP_TIMER_PWM_Init()
 	// Enable GPIOE clock
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOEEN;
 
-	// Configure PE9 and PE11 as Alternate Function
-	GPIOE->MODER &= ~(GPIO_MODER_MODER9_Msk | GPIO_MODER_MODER11_Msk);
-	GPIOE->MODER |=  (0x02 <<GPIO_MODER_MODER9_Pos) | (0x02 <<GPIO_MODER_MODER11_Pos);
+	// Configure PA8 and PA9 as Alternate Function
+	GPIOA->MODER &= ~(GPIO_MODER_MODER8_Msk | GPIO_MODER_MODER9_Msk);
+	GPIOA->MODER |=  (0x02 <<GPIO_MODER_MODER8_Pos) | (0x02 <<GPIO_MODER_MODER9_Pos);
 
-	// Set PE9 and PE11 to AF1 (TIM1)
-	GPIOE->AFR[1] |= (0b0001<<GPIO_AFRH_AFRH1_Pos);
-	GPIOE->AFR[1] |= (0b0001<<GPIO_AFRH_AFRH3_Pos);
-
+	// Set PA8 and PA9 to AF2 (TIM1)
+	GPIOA->AFR[1] &= ~(0x000000FF);
+	GPIOA->AFR[1] |=  (0x00000022);
 
 	// Enable TIM1 clock
 	RCC -> APB2ENR |= RCC_APB2ENR_TIM1EN;
