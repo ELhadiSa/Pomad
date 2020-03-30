@@ -28,30 +28,36 @@ uint16_t	TIM6_UIF;
 // Main program
 
 void main()
-{
-	// Configure System Clock
-	SystemClock_Config();
+{// Main program
 
-	// Initialize Button pin
-	BSP_PB_Init();
-
-	// Initialize Console
-	BSP_Console_Init();
-	my_printf("Console Ready!\r\n");
-
-	// Initialize Timer Delay
-	BSP_DELAY_TIM_init();
-
-	// Initialize NVIC
-	BSP_NVIC_Init();
-
-	// Main loop
-	while(1)
+	void main()
 	{
-		// Some important stuff to do
-		my_printf(".");
-		BSP_DELAY_TIM_ms(200);
+		// Configure System Clock
+		SystemClock_Config();
+
+		// Initialize Button pin
+		BSP_PB_Init();
+
+		// Initialize Console
+		BSP_Console_Init();
+		my_printf("Console Ready!\r\n");
+
+		// Initialize Timer Delay
+		BSP_DELAY_TIM_init();
+
+		// Initialize NVIC
+		BSP_NVIC_Init();
+
+		// Main loop
+		while(1)
+		{
+			// Some important stuff to do
+			my_printf(".");
+			BSP_DELAY_TIM_ms(200);
+		}
 	}
+
+
 }
 
  void SystemClock_Config(void){

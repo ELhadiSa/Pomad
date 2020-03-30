@@ -12,7 +12,7 @@
 #include "STM32F746xx.h"
 extern int my_printf(const char *format, ...);
 
-void EXTI15_10_IRQHandler()
+void EXTI4_15_IRQHandler()
 {
 	// Test for line 13 pending interrupt
 	if ((EXTI->PR & EXTI_PR_PR13_Msk) != 0)

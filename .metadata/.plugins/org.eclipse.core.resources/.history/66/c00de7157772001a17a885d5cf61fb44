@@ -1,3 +1,12 @@
+/**
+  * @brief  This function handles SysTick Handler.
+  * @param  None
+  * @retval None
+  */
+void SysTick_Handler(void)
+{
+  // HAL_IncTick();
+}
 
 /******************************************************************************/
 /*                 STM32F0xx Peripherals Interrupt Handlers                   */
@@ -9,10 +18,8 @@
 /**
   * This function handles EXTI line 13 interrupt request.
   */
-#include "STM32F746xx.h"
-extern int my_printf(const char *format, ...);
 
-void EXTI15_10_IRQHandler()
+void EXTI4_15_IRQHandler()
 {
 	// Test for line 13 pending interrupt
 	if ((EXTI->PR & EXTI_PR_PR13_Msk) != 0)
@@ -25,15 +32,4 @@ void EXTI15_10_IRQHandler()
 		my_printf("#");
 	}
 
-}
-
-
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void SysTick_Handler(void)
-{
-  // HAL_IncTick();
 }
