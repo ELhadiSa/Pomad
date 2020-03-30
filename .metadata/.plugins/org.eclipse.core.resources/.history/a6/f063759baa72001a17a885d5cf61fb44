@@ -130,12 +130,9 @@ void SystemClock_Config(void)
 }
 
 
-// Main program
 
 void main()
 {
-	uint8_t		rx_byte;
-
 	// Configure System Clock
 	SystemClock_Config();
 
@@ -146,12 +143,6 @@ void main()
 	// Main loop
 	while(1)
 	{
-		// If there is something in USART RDR register
-		if ( (USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE )
-		{
-			// Read and report the content of RDR
-			rx_byte = USART3->RDR;
-			my_printf("You've hit the '%c' key\r\n", rx_byte);
-		}
+		// Do nothing...
 	}
 }

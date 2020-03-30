@@ -8,15 +8,6 @@
 
 #include "stm32f7xx.h"
 #include "bsp.h"
-//#define INPUTCAPTURE_PROG
-#define PWM_PROG
-#define BP_IT
-uint16_t	TIM6_counter;
-uint16_t	TIM6_UIF;
-uint8_t 	timebase_irq = 0;
-
-uint8_t	button_irq = 0;
-
 
 void SystemClock_Config(void);
 extern int my_printf	(const char *format, ...);
@@ -24,12 +15,64 @@ extern void BSP_DELAY_ms(uint32_t delay);
 extern int BSP_DELAY_TIM_init();
 extern int BSP_DELAY_TIM_ms();
 
+// Global variables
 
-void SystemClock_Config(void)
+uint16_t	TIM6_counter;
+uint16_t	TIM6_UIF;
+uint8_t	button_irq = 0;
+
+
+#define BP_IT
+#define PWM_PROG
+//#define INPUTCAPTURE_PROG
+
+// Global variables
+
+uint8_t 	timebase_irq = 0;
+
+// Main program
+
+void main()
 {
+	// Configure System Clock
+	SystemClock_Config();
 
-	  //HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
+	// Initialize Button pin
+	BSP_PB_Init();
 
+	// Initialize Console
+	BSP_Console_Init();
+	my_printf("Console Ready!\r\n");
+
+	// Initialize timebase
+	BSP_TIMER_Timebase_Init();
+
+	// Initialize NVIC
+	BSP_NVIC_Init();
+
+	// Main loop
+	while(1)
+	{
+		// Process button upon interrupt
+		if (button_irq == 1)
+		{
+			my_printf("#");
+			button_irq = 0;
+		}
+
+		// Process main task upon timebase interrupt
+		if (timebase_irq == 1)
+		{
+			my_printf(".");
+			timebase_irq = 0;
+		}
+	}
+}
+
+ void SystemClock_Config(void){
+	/*
+	 * HSI CONF to get 48MHZ using PLL  48=16/10*240/8/1/1
+	 */
 		uint32_t 	HSI_Status;
 		uint32_t	PLL_Status;
 		uint32_t	SW_Status;
@@ -127,31 +170,4 @@ void SystemClock_Config(void)
 //		// Update SystemCoreClock global variable
 		SystemCoreClockUpdate();
 
-}
-
-
-// Main program
-
-void main()
-{
-	uint8_t		rx_byte;
-
-	// Configure System Clock
-	SystemClock_Config();
-
-	// Initialize Console
-	BSP_Console_Init();
-	my_printf("Console Ready!\r\n");
-
-	// Main loop
-	while(1)
-	{
-		// If there is something in USART RDR register
-		if ( (USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE )
-		{
-			// Read and report the content of RDR
-			rx_byte = USART3->RDR;
-			my_printf("You've hit the '%c' key\r\n", rx_byte);
-		}
-	}
 }
