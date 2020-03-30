@@ -28,6 +28,7 @@ uint8_t	button_irq = 0;
 
 // Global variables
 
+uint8_t	button_irq = 0;
 uint8_t 	timebase_irq = 0;
 
 // Main program

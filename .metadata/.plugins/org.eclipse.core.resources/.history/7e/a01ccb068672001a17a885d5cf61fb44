@@ -26,10 +26,6 @@ uint8_t	button_irq = 0;
 #define PWM_PROG
 //#define INPUTCAPTURE_PROG
 
-// Global variables
-
-uint8_t 	timebase_irq = 0;
-
 // Main program
 
 void main()
@@ -44,29 +40,26 @@ void main()
 	BSP_Console_Init();
 	my_printf("Console Ready!\r\n");
 
-	// Initialize timebase
-	BSP_TIMER_Timebase_Init();
+	// Initialize Timer Delay
+	BSP_DELAY_TIM_init();
 
 	// Initialize NVIC
 	BSP_NVIC_Init();
 
 	// Main loop
-	while(1)
-	{
-		// Process button upon interrupt
-		if (button_irq == 1)
+		while(1)
+		{
+		// Process button request if needed
+		while(button_irq > 0)
 		{
 			my_printf("#");
-			button_irq = 0;
+			button_irq--;
 		}
 
-		// Process main task upon timebase interrupt
-		if (timebase_irq == 1)
-		{
+			// Some important stuff to do
 			my_printf(".");
-			timebase_irq = 0;
+			BSP_DELAY_TIM_ms(200);
 		}
-	}
 }
 
  void SystemClock_Config(void){
