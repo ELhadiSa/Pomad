@@ -25,7 +25,7 @@ void EXTI15_10_IRQHandler()
 		EXTI->PR = EXTI_PR_PR13;
 
 		// Do what you need
-		button_irq++;
+		button_irq = 1;
 	}
 }
 

@@ -12,22 +12,21 @@
 #include "STM32F746xx.h"
 extern int my_printf(const char *format, ...);
 
-
-
-extern uint8_t button_irq;
-
 void EXTI15_10_IRQHandler()
 {
 	// Test for line 13 pending interrupt
 	if ((EXTI->PR & EXTI_PR_PR13_Msk) != 0)
 	{
 		// Clear pending bit 13 by writing a '1'
+                // Do not use OR masking here
 		EXTI->PR = EXTI_PR_PR13;
 
 		// Do what you need
-		button_irq++;
+		my_printf("#");
 	}
+
 }
+
 
 /**
   * @brief  This function handles SysTick Handler.

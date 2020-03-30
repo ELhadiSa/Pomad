@@ -49,12 +49,12 @@ void main()
 	// Main loop
 		while(1)
 		{
-		// Process button request if needed
-		while(button_irq > 0)
-		{
-			my_printf("#");
-			button_irq--;
-		}
+			// Process button request if needed
+			if (button_irq == 1)
+			{
+				my_printf("#");
+				button_irq = 0;
+			}
 
 			// Some important stuff to do
 			my_printf(".");
