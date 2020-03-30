@@ -41,8 +41,8 @@ void main()
 	{
 		//3.1. Single edge capture
 
-		//// Report TIM3 status (CNT and CCR1 registers)
-		//my_printf("CNT->%05d Fall->%05d\r", TIM3->CNT, TIM3->CCR1);
+		// Report TIM3 status (CNT and CCR1 registers)
+		my_printf("CNT->%05d Fall->%05d\r", TIM3->CNT, TIM3->CCR1);
 
 
 		//3.2. Dual edges capture

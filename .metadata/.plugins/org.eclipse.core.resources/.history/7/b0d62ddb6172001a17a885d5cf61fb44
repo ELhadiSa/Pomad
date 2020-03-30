@@ -39,17 +39,8 @@ void main()
 
 	while(1)
 	{
-		//3.1. Single edge capture
-
-		//// Report TIM3 status (CNT and CCR1 registers)
-		//my_printf("CNT->%05d Fall->%05d\r", TIM3->CNT, TIM3->CCR1);
-
-
-		//3.2. Dual edges capture
-
-		 // Report TIM3 status (CNT, CCR1 and CCR2 registers)
-		my_printf("CNT->%05d Fall->%05d Rise->%05d\r", TIM3->CNT, TIM3->CCR1, TIM3->CCR2 );
-
+		// Report TIM3 status (CNT and CCR1 registers)
+		my_printf("CNT->%05d Fall->%05d\r", TIM3->CNT, TIM3->CCR1);
 
 		// Wait for 100ms
 		BSP_DELAY_TIM_ms(100);
