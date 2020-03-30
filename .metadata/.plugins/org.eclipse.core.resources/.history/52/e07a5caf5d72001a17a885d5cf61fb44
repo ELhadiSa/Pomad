@@ -47,12 +47,4 @@ void BSP_ADC_Init		(void);
 
 void BSP_TIMER_Timebase_Init	(void);
 
-
-
-/*
- * Timer functions
- */
-
-void BSP_TIMER_Timebase_Init	(void);
-void BSP_TIMER_IC_Init		(void);
 #endif /* BSP_BSP_H_ */

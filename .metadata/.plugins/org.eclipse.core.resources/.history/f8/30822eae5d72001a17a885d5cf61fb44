@@ -27,25 +27,22 @@ void main()
 	// Configure System Clock
 	SystemClock_Config();
 
-	// Initialize Console
-	BSP_Console_Init();
-	my_printf("Console Ready!\r\n");
+	// Initialize LED pin
+	BSP_LED_Init();
 
 	// Initialize Timer for delays
 	BSP_DELAY_TIM_init();
 
-	// Initialize Timer for Input Capture
-	BSP_TIMER_IC_Init();
-
 	while(1)
 	{
-		// Report TIM3 status (CNT and CCR1 registers)
-		my_printf("CNT->%05d Fall->%05d\r", TIM3->CNT, TIM3->CCR1);
+		// Toggle LED
+		BSP_LED_Toggle();
 
-		// Wait for 100ms
-		BSP_DELAY_TIM_ms(100);
+		// Wait for 200ms
+		BSP_DELAY_TIM_ms(200);
 	}
 }
+
 
  void SystemClock_Config(void){
 	/*
