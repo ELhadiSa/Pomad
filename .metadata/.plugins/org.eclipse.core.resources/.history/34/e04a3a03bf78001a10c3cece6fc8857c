@@ -10,7 +10,7 @@
   * This function handles EXTI line 13 interrupt request.
   */
 #include "STM32F746xx.h"
-extern uint8_t	console_rx_byte[10];
+extern uint8_t	console_rx_byte;
 extern uint8_t	console_rx_irq;
 
 extern int my_printf(const char *format, ...);
@@ -60,7 +60,7 @@ void TIM6_DAC_IRQHandler()
 void USART3_IRQHandler()
 {
 	// Test for RXNE pending interrupt
-	if ((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)
+	if ((USART2->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)
 	{
 		// RXNE flags automatically clears when reading RDR.
 

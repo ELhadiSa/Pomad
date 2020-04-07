@@ -10,7 +10,7 @@
   * This function handles EXTI line 13 interrupt request.
   */
 #include "STM32F746xx.h"
-extern uint8_t	console_rx_byte[10];
+extern uint8_t	console_rx_byte;
 extern uint8_t	console_rx_irq;
 
 extern int my_printf(const char *format, ...);
@@ -65,8 +65,8 @@ void USART3_IRQHandler()
 		// RXNE flags automatically clears when reading RDR.
 
 		// Store incoming byte
-		console_rx_byte[console_rx_irq] = USART3->RDR;
-		console_rx_irq++;
+		console_rx_byte = USART3->RDR;
+		console_rx_irq = 1;
 	}
 
 }

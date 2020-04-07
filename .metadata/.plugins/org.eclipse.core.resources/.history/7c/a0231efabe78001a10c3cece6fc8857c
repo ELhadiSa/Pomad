@@ -139,8 +139,6 @@ void SystemClock_Config(void)
 
 void main()
 {
-	uint8_t *prx_buffer;
-
 	// Configure System Clock
 	SystemClock_Config();
 
@@ -167,15 +165,11 @@ void main()
 			button_irq = 0;
 		}
 
-		// Set pointer at the beginning of UART RX buffer
-		prx_buffer = console_rx_byte;
-
 		// Process console incoming byte upon interrupt
-		while (console_rx_irq > 0)
+		if (console_rx_irq == 1)
 		{
-			my_printf("%c", *prx_buffer);
-			prx_buffer++;
-			console_rx_irq --;
+			my_printf("%c", console_rx_byte);
+			console_rx_irq = 0;
 		}
 
 		// Process main task upon timebase interrupt
@@ -187,4 +181,3 @@ void main()
 		}
 	}
 }
-
