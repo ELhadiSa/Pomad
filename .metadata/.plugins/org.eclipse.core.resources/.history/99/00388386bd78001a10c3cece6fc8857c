@@ -139,7 +139,7 @@ void BSP_NVIC_Init()
 		NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 		// Set priority level 1 for TIM6 interrupt
-		NVIC_SetPriority(TIM6_DAC_IRQn, 1);
+		NVIC_SetPriority(TIM6_DAC_IRQn, 2);
 
 		// Enable TIM6 interrupts
 		NVIC_EnableIRQ(TIM6_DAC_IRQn);
@@ -291,7 +291,7 @@ void BSP_ADC_Init()
  * Auto-reload = 1000  -> Update period   = 1s
  * ####################  OR  ########################
  *when TIMER_IT is #def
-  *
+ * /*
  * BSP_TIMER_Timebase_Init()
  * TIM6 at 48MHz
  * Prescaler   = 48000 -> Counting period = 1ms

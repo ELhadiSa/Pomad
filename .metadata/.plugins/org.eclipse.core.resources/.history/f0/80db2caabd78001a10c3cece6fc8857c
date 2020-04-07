@@ -57,7 +57,7 @@ void TIM6_DAC_IRQHandler()
   */
 
 
-void USART3_IRQHandler()
+void USART2_IRQHandler()
 {
 	// Test for RXNE pending interrupt
 	if ((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)

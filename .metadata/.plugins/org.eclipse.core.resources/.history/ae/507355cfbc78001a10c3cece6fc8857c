@@ -10,9 +10,6 @@
   * This function handles EXTI line 13 interrupt request.
   */
 #include "STM32F746xx.h"
-extern uint8_t	console_rx_byte;
-extern uint8_t	console_rx_irq;
-
 extern int my_printf(const char *format, ...);
 
 
@@ -55,21 +52,6 @@ void TIM6_DAC_IRQHandler()
   * @param  None
   * @retval None
   */
-
-
-void USART3_IRQHandler()
-{
-	// Test for RXNE pending interrupt
-	if ((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)
-	{
-		// RXNE flags automatically clears when reading RDR.
-
-		// Store incoming byte
-		console_rx_byte = USART3->RDR;
-		console_rx_irq = 1;
-	}
-
-}
 void SysTick_Handler(void)
 {
   // HAL_IncTick();
